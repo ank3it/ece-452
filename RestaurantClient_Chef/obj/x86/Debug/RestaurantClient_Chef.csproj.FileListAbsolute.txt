@@ -1,0 +1,10 @@
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\RestaurantClient_Chef.Properties.Resources.resources
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\Client\RestaurantClient_Chef.exe.config
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\Client\RestaurantClient_Chef.exe
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\Client\RestaurantClient_Chef.pdb
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\RestaurantClient_Chef.SimpleMessageUI.resources
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\RestaurantClient_Chef.exe
+C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\DesktopRemoteControlClient\obj\x86\Debug\RestaurantClient_Chef.pdb
