@@ -1,7 +1,0 @@
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\RestaurantServer.exe.config
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\App.config
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\RestaurantServer.exe
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\RestaurantServer.pdb
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\RestaurantServer.exe
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\RestaurantServer.pdb
