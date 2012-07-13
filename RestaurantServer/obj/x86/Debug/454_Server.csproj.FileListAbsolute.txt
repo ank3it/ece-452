@@ -1,7 +1,0 @@
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\App.config
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\HomeSecuritySystem.exe.config
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\HomeSecuritySystem.exe
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\Output\HomeSecuritySystem.pdb
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\HomeSecuritySystem.exe
-C:\Users\Duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\HomeSecuritySystem.pdb
