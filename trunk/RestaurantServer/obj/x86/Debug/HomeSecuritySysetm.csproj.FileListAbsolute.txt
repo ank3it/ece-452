@@ -1,0 +1,5 @@
+c:\users\duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\bin\Debug\HomeSecuritySysetm.exe
+c:\users\duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\bin\Debug\HomeSecuritySysetm.pdb
+c:\users\duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\HomeSecuritySysetm.exe
+c:\users\duy\documents\visual studio 2010\Projects\HomeSecuritySysetm\HomeSecuritySysetm\obj\x86\Debug\HomeSecuritySysetm.pdb
