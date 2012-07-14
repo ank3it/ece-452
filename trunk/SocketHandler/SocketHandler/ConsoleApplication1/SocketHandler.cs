@@ -12,8 +12,8 @@ namespace ConsoleApplication1
     class SocketHandler
     {
         TcpListener listener;
-        const string sIP = "169.254.33.133";  //server IP       
-        const int iPort = 8080; //server port
+        const string sIP = "172.21.26.182";  //server IP       
+        const int iPort = 4449; //server port
 
         public void StartListening()
         {
@@ -28,6 +28,7 @@ namespace ConsoleApplication1
         {
             const int bufferSize = 1024;
 
+            Console.WriteLine("Waiting for client...");
             Socket clientSocket = listener.AcceptSocket();
             Console.WriteLine("Accepted client");
 
@@ -36,6 +37,7 @@ namespace ConsoleApplication1
                 byte[] bytes = new byte[bufferSize];
 
                 //receive bytes on the socket (blocking receive)
+                Console.WriteLine("Waiting for messages...");
                 int numBytesReceived = clientSocket.Receive(bytes); //store message into bytes array
                 if (numBytesReceived == 0)
                 {
@@ -57,7 +59,7 @@ namespace ConsoleApplication1
                 string r = mp.Parse(msg);
 
                 clientSocket.Send(Encoding.ASCII.GetBytes(r));
-                Console.WriteLine("Sent back result");
+                Console.WriteLine("Sent back result: " + r);
             }
         }
     }
