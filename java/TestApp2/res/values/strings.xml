@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">TestApp2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Eat On The Go</string>
+    <string name="restLabel">Select a restaurant from the list:</string>
+    <string name="btnSubmit">Continue</string>
+    <string name="appTitle">Eat On The Go</string>
+
+</resources>
