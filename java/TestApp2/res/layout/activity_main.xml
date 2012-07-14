@@ -19,7 +19,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="82dp"
-        android:onClick="openMenu"
+        android:onClick="onContinueClicked"
         android:text="@string/btnSubmit" />
 
     <Spinner
