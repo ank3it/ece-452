@@ -17,7 +17,7 @@ namespace ConsoleApplication1
             {
                 case 1:
                     //getRestaurants
-                    return "2,A,B,C,D,E";
+                    return "2,A,B,C,D,E\n";
                 default:
                     break;
             }
