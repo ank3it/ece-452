@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -19,29 +20,21 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.support.v4.app.NavUtils;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
 public class MainActivity extends Activity implements OnItemSelectedListener{
-
 	
 	public final Handler mHandler = new Handler();
-	
-	
-
 	public String menuItems = "";
     public final Runnable mUpdateMenu = new Runnable() {
+    	//this is done because the socket stuff is on a separate thread from the UI
+    	//menu/UI has to update dynamically when the results from the socket thread come back
+    	//socket thread will invoke this method
         public void run() {
         	createMenu(menuItems);
         }
     };
 	
-		
- //  MessagesTask mt = null;
-	  
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	//startup logic that happens only once for entire lifecycle of activity
@@ -54,10 +47,9 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         
         
         SendMessageAsync a = new SendMessageAsync(this);
-        a.message("1,getRestaurants,");
-        
-        
-        a.execute("1,getRestaurants,");        
+       
+	    a.message("1,getRestaurants,"); //hack, see comments in method
+	    a.execute(); //will send msg to server in separate thread and wait for reply     
      
         //then onStart, onResume are called
     }
@@ -65,8 +57,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     @Override
     public void onStart() {
     	super.onStart();
-    
-    	//CreateMenu();
+
     }
     
     public void createMenu(String str)
@@ -77,9 +68,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  
 		s.setAdapter(adapter);    
 		adapter.add(str);
-		//adapter.add("Restaurant 2");
-		//adapter.add("Restaurant 3");
-		
 		s.setOnItemSelectedListener(this);    	
     }
     
@@ -96,8 +84,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     	//or user could be leaving thsi gets called first
     	//stop animations, other actions
     	//commit unsaved chagnes
-    	//release system resources that mya effec battery life
-    	
+    	//release system resources that mya effec battery life    	
     }    
     
     @Override
@@ -105,9 +92,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     	super.onResume();
     	//after start or after pause
     	//called whenever activity comes into foreground
-    	//initialize components which are released in onPause()
-    	
-    	
+    	//initialize components which are released in onPause() 	    	
     } 
     
     @Override
@@ -119,59 +104,32 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     	
     	//system might now call the app if needed w/o calling ondestroy
     	//save stuff to persistent storage to avoid loss of info
-    	//Note: system keeps track of input in View objects
-    	
+    	//Note: system keeps track of input in View objects    	
     } 
     
     @Override
     public void onRestart() {
-    	super.onRestart();
-    	
+    	super.onRestart();    	
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-    	super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
-
-    public void openMenu(View view)
+    
+    public void onContinueClicked(View view)
     {
-    	//take the selection and pass it to the next activity
+    	//switches activities for now
     	Intent intent = new Intent(this, MenuActivity.class);
     	
-    	intent.putExtra("SOME_MSG", "THE MESSAGE");
+    	intent.putExtra("SOME_MSG", "THE MESSAGE"); //msg passed to other activity
     	//EditText editText = (EditText) findViewById(R.id.edit_message);
     	//String message = editText.getText().toString();
     	
     	startActivity(intent);
     }
     
-    public void sendMessage(View view) {
-    	//Intent intent = new Intent(this, DisplayMessageActivity.class);
-    	
-
-    	//	intent.putExtra("MSG", "message sent!");
-    	
-    	//startActivity(intent);
-    	
-    	/*
-    	if (mt == null)
-    	{
-    		mt = new MessagesTask();   		    		
-    	}
-    	mt.execute("sfsf");       
-    	*/
-    }
-
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
-		// TODO Auto-generated method stub
+		//can get and store the selected item here
 		String s = (String)parent.getItemAtPosition(pos);
-		int i  = 3;
-		
-		 		
+		int i  = 3;		 		
 	}
 
 	@Override
@@ -180,14 +138,12 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
 		
 	}          
 }
-    	
-    
+    	    
 
 class SendMessageAsync extends AsyncTask<String, Void, String> 
-{ 
-	 
-    private Exception exception; 
+{ 	 
     private PrintWriter out;
+    private BufferedReader in = null;
     Socket socket = null;
     
     String m = "";
@@ -195,43 +151,43 @@ class SendMessageAsync extends AsyncTask<String, Void, String>
     MainActivity act;
     public SendMessageAsync(MainActivity a)
     {
+    	//save activity so we can dynamically populate its menu based on results from server
+    	//this is needed because the socket stuff is on a separate thread from the UI
     	act = a;
     }
     public void message(String msg)
     {
+    	//hack...for some reason I cant figure out when i pass string directly to doInbackgroung
+    	//it gets read in c# as java.lang.String instead of the actual avlue
+    	//this provides a workaround..
     	m = msg;
     }
     
-    
     protected String doInBackground(String... urls) 
-    { 
-    	String line = "";
-        try { 
-	        //InetAddress serverAddr = null;
-	        try {
-	        //	serverAddr = InetAddress.getByName("localhost");
-	        	
- 
-		        
-	         //   Socket mySocket = new Socket(serverAddr, 666);
+    {     	
+        try {
+        	String line = "";
+	        try 
+	        {
+	        	InetAddress serverAddr = InetAddress.getByName("172.21.26.182");
+	        
 	        	if (socket == null)
-	        		socket = new Socket("172.21.26.182", 4449);
-	        	 // Socket mySocket = new Socket("10.0.2.2", 5001);
-		        out = new PrintWriter(socket.getOutputStream(), true);
-		        
-		       // String s = urls.toString(); //for some reason necessary
+	        	{
+	        		socket = new Socket(serverAddr, 4449);
+	        		out = new PrintWriter(socket.getOutputStream(), true);
+	        		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	        	}
+		              	
+	        	//write message to socket
 		        out.println(m);
 		        
-		        
-		        BufferedReader in = null;
-		        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		        
-		        
-		        while(true){
-		            try{
+		        //read message reply
+		        while(true)
+		        {
+		            try
+		            {
 		              line = in.readLine();
-		              break;
-		              
+		              break;		              
 		            } catch (IOException e) {
 		              System.out.println("Read failed");
 		              System.exit(-1);
@@ -242,15 +198,17 @@ class SendMessageAsync extends AsyncTask<String, Void, String>
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	        act.menuItems = line;
-	        act.mHandler.post(act.mUpdateMenu);
 	        
-	             
-        } catch (Exception e) { 
-            this.exception = e; 
-      
+	        //populates menu with retrieved items
+	        act.menuItems = line;
+	        act.mHandler.post(act.mUpdateMenu);	                    
+        } 
+        catch (Exception e) 
+        { 
+        	System.out.println(e.toString());            
+        	e.printStackTrace();
         }
-	//	return "BLAH";
+
 		return null;	
     }    
  
@@ -259,50 +217,3 @@ class SendMessageAsync extends AsyncTask<String, Void, String>
         // TODO: do something with the feed 
     } 
  } 
-
-/*
-class MessagesTask extends AsyncTask<String, Void, String> 
-{ 
-	 
-    private Exception exception; 
-    private PrintWriter out;
-    Socket socket = null;
-    protected String doInBackground(String... urls) 
-    {
-    	return null;
-    }
-    	 //InetAddress serverAddr = null;
-    	
-	        try {
-	        //	serverAddr = InetAddress.getByName("localhost");
-	        	
-	
-		        
-	         //   Socket mySocket = new Socket(serverAddr, 666);
-	        	if (socket == null)
-	        	{
-	        		socket = new Socket("192.168.0.11", 4449);
-	        		out = new PrintWriter(socket.getOutputStream(), true);
-	        		out.println("Created new andriod socket");
-	        	}
-	        	 // Socket mySocket = new Socket("10.0.2.2", 5001);
-		        
-		        out.println("Sending msg1 from Android<END>");
-		        out.println("Sending msg2 from Android<END>");
-	        } catch (UnknownHostException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }    
-	        
-    	} catch (Exception e) {
-    		e.printStackTrace();
-    	
-    	return null;
-    
-    
-    protected void onPostExecute() { 
-        // TODO: check this.exception  
-        // TODO: do something with the feed 
-    }     
-}*/
