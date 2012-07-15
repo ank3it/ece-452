@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView 
+        android:id="@+id/nameFieldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: "/>
+    <EditText 
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/nameFieldLabel"
+        android:inputType="text"/>
+    
+    <TextView 
+        android:id="@+id/addressFieldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameField"
+        android:text="Address: "/>
+    <EditText 
+        android:id="@+id/addressField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/addressFieldLabel"
+        android:layout_below="@id/nameField"
+        android:inputType="text"/>
+
+	<TextView 
+        android:id="@+id/phoneFieldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addressField"
+        android:text="Phone Number: "/>
+    <EditText 
+        android:id="@+id/phoneField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/phoneFieldLabel"
+        android:layout_below="@id/addressField"
+        android:inputType="phone"/>
+    
+    <TextView 
+        android:id="@+id/emailFieldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phoneField"
+        android:text="Email: "/>
+    <EditText 
+        android:id="@+id/emailField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/emailFieldLabel"
+        android:layout_below="@id/phoneField"
+        android:inputType="textEmailAddress"/>
+    
+    <TextView 
+        android:id="@+id/quantityFieldLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailField"
+        android:text="Quantity: "/>
+    <EditText 
+        android:id="@+id/quantityField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/quantityFieldLabel"
+        android:layout_below="@id/emailField"
+        android:inputType="number"/>
+    
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityField"
+        android:text="Order" />
+    
+</RelativeLayout>
