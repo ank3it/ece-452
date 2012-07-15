@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace ConsoleApplication1
+namespace RestaurantServer.Utilities
 {
     class SocketHandler
     {
@@ -18,6 +18,7 @@ namespace ConsoleApplication1
         public void StartListening()
         {
             listener = new TcpListener(System.Net.IPAddress.Parse(sIP), iPort);
+            //listener = new TcpListener(System.Net.IPAddress.Any, iPort);
             listener.Start();
 
             Thread t = new Thread(new ThreadStart(ListenForMessages));
@@ -57,20 +58,24 @@ namespace ConsoleApplication1
                     if (!String.IsNullOrEmpty(msg))
                         Console.WriteLine("(FROM CLIENT): {0}", msg);
 
-                    var mp = new MessageParser();
-                    //string r = mp.Parse(msg);
+                    string r = MessageParser.Parse(msg);
 
-                    //clientSocket.Send(Encoding.ASCII.GetBytes(r));
-                    //Console.WriteLine("Sent back result: " + r);
-                    clientSocket.Send(Encoding.ASCII.GetBytes(msg));
-                    Console.WriteLine("Sent back result: " + msg);
+                    // if the response message is not empty, send it back to the client
+                    if (!string.IsNullOrEmpty(r))
+                    {
+                        clientSocket.Send(Encoding.ASCII.GetBytes(r));
+                        Console.WriteLine("Server response: " + r);
+                    }
                 }
                 catch (SocketException e)
                 {
                     Console.WriteLine("Client has disconnected.");
                     Console.WriteLine(e.ToString());
+                    break;
                 }
             }
+
+            ListenForMessages();
         }
     }
 }

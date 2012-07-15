@@ -19,4 +19,8 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:complexType name="Customer">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
 </xs:schema>

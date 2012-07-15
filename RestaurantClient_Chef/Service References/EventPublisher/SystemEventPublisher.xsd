@@ -57,6 +57,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RestaurantServer.Contracts" minOccurs="0" name="update" nillable="true" type="q3:Order" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RestaurantServer.Contracts" minOccurs="0" name="customer" nillable="true" type="q4:Customer" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -69,14 +69,50 @@ namespace RestaurantServer.Contracts
         /// <param name="id">Order ID.</param>
         /// <param name="items">Items requested in this order. Key value pair
         /// using the format <item name, quantity>.</param>
-        public Order(int id, Dictionary<string, int> items)
+        public Order(int id, Dictionary<string, int> items, string restaurantName)
         {
             ID = id;
             Items = items;
+            RestaurantName = restaurantName;
         }
+
+        public string RestaurantName { get; private set; }
 
         public Dictionary<string, int> Items { get; private set; }
 
         public int ID { get; private set; }
+    }
+
+    /// <summary>
+    /// gmaillc
+    /// </summary>
+    [DataContract]
+    public class Customer
+    {
+        /// <summary>
+        /// Default constructor to build a customer object based on a name,
+        /// address, and phone number.
+        /// </summary>
+        public Customer(string name, string address, string phoneNumber)
+        {
+            Name = name;
+            Address = address;
+            PhoneNumber = phoneNumber;
+        }
+
+        /// <summary>
+        /// Address of customer to deliver order to.
+        /// </summary>
+        public string Address { get; private set; }
+
+        /// <summary>
+        /// Name of customer.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Phone number of customer to give SMS updates to.
+        /// </summary>
+        public string PhoneNumber { get; private set; }
     }
 }
