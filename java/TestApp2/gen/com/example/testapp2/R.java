@@ -20,17 +20,27 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int menu_settings=0x7f080006;
-        public static final int myTableLayout=0x7f080003;
-        public static final int restaurant_spinner=0x7f080001;
-        public static final int textView1=0x7f080000;
-        public static final int textView2=0x7f080002;
-        public static final int textView4=0x7f080004;
-        public static final int textView5=0x7f080005;
+        public static final int addressField=0x7f080004;
+        public static final int addressFieldLabel=0x7f080003;
+        public static final int emailField=0x7f080008;
+        public static final int emailFieldLabel=0x7f080007;
+        public static final int empty=0x7f080000;
+        public static final int menuItemName=0x7f08000c;
+        public static final int menuItemPrice=0x7f08000d;
+        public static final int menu_settings=0x7f08000e;
+        public static final int nameField=0x7f080002;
+        public static final int nameFieldLabel=0x7f080001;
+        public static final int orderButton=0x7f08000b;
+        public static final int phoneField=0x7f080006;
+        public static final int phoneFieldLabel=0x7f080005;
+        public static final int quantityField=0x7f08000a;
+        public static final int quantityFieldLabel=0x7f080009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_menu=0x7f030001;
+        public static final int activity_order=0x7f030002;
+        public static final int menu_list_item=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
