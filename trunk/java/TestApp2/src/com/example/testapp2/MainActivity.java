@@ -4,25 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 
 
-public class MainActivity extends Activity implements OnItemSelectedListener{
+public class MainActivity extends ListActivity implements OnItemSelectedListener{
 	
 	public final Handler mHandler = new Handler();
 	public String menuItems = "";
@@ -31,7 +29,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     	//menu/UI has to update dynamically when the results from the socket thread come back
     	//socket thread will invoke this method
         public void run() {
-        	createMenu(menuItems);
+        	//createMenu(menuItems);
         }
     };
 	
@@ -43,33 +41,45 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
         
         
         //set UI layout
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        
+        String[] resturants = {"Chink Foo", "abc", "cdf", "laksjdflajf", "alksj lasjf"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resturants);
+        setListAdapter(adapter);
+        getListView().setOnItemClickListener(listItemClickListener);
         
         
-        SendMessageAsync a = new SendMessageAsync(this);
-       
-	    a.message("1,getRestaurants,"); //hack, see comments in method
-	    a.execute(); //will send msg to server in separate thread and wait for reply     
+//        SendMessageAsync a = new SendMessageAsync(this);
+//       
+//	    a.message("1,getRestaurants,"); //hack, see comments in method
+//	    a.execute(); //will send msg to server in separate thread and wait for reply     
      
-        //then onStart, onResume are called
-    }
-
-    @Override
-    public void onStart() {
-    	super.onStart();
-
+        //then onStart, onResume are call1ed
     }
     
-    public void createMenu(String str)
-    {    	
-        Spinner s = (Spinner)this.findViewById(R.id.restaurant_spinner);
-        
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item); 
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  
-		s.setAdapter(adapter);    
-		adapter.add(str);
-		s.setOnItemSelectedListener(this);    	
-    }
+    private OnItemClickListener listItemClickListener = new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			TextView tv = (TextView) view;
+			String resturantName = tv.getText().toString();
+			
+			Intent intent = new Intent(parent.getContext(), MenuActivity.class);
+			intent.putExtra("resturantName", resturantName);
+			startActivity(intent);			
+		}
+	};
+    
+//    public void createMenu(String str)
+//    {    	
+//        Spinner s = (Spinner)this.findViewById(R.id.restaurant_spinner);
+//        
+//        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item); 
+//		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);  
+//		s.setAdapter(adapter);    
+//		adapter.add(str);
+//		s.setOnItemSelectedListener(this);    	
+//    }
     
     @Override
     public void onDestroy() {
@@ -112,17 +122,17 @@ public class MainActivity extends Activity implements OnItemSelectedListener{
     	super.onRestart();    	
     }
     
-    public void onContinueClicked(View view)
-    {
-    	//switches activities for now
-    	Intent intent = new Intent(this, MenuActivity.class);
-    	
-    	intent.putExtra("SOME_MSG", "THE MESSAGE"); //msg passed to other activity
-    	//EditText editText = (EditText) findViewById(R.id.edit_message);
-    	//String message = editText.getText().toString();
-    	
-    	startActivity(intent);
-    }
+//    public void onContinueClicked(View view)
+//    {
+//    	//switches activities for now
+//    	Intent intent = new Intent(this, MenuActivity.class);
+//    	
+//    	intent.putExtra("SOME_MSG", "THE MESSAGE"); //msg passed to other activity
+//    	//EditText editText = (EditText) findViewById(R.id.edit_message);
+//    	//String message = editText.getText().toString();
+//    	
+//    	startActivity(intent);
+//    }
     
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
@@ -169,11 +179,11 @@ class SendMessageAsync extends AsyncTask<String, Void, String>
         	String line = "";
 	        try 
 	        {
-	        	InetAddress serverAddr = InetAddress.getByName("172.21.26.182");
+	        	String host = "169.254.207.133";
 	        
 	        	if (socket == null)
 	        	{
-	        		socket = new Socket(serverAddr, 4449);
+	        		socket = new Socket(host, 4449);
 	        		out = new PrintWriter(socket.getOutputStream(), true);
 	        		in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	        	}
@@ -187,7 +197,6 @@ class SendMessageAsync extends AsyncTask<String, Void, String>
 		            try
 		            {
 		              line = in.readLine();
-		              break;		              
 		            } catch (IOException e) {
 		              System.out.println("Read failed");
 		              System.exit(-1);
