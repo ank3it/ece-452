@@ -32,9 +32,9 @@ namespace RestaurantServer
         /// Notify clients of new order and place new order into collection.
         /// </summary>
         /// <param name="o"></param>
-        public void PublishNewOrder(Order o)
+        public void PublishNewOrder(Order o, Customer c)
         {
-            subscribers.ForEach(x => x.NewOrder(o));
+            subscribers.ForEach(x => x.NewOrder(o, c));
             OrderCollectionHandler.Instance.AddOrder(o);
         }
 

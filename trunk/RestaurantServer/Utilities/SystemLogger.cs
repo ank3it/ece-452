@@ -58,15 +58,14 @@ namespace RestaurantServer.Utilities
 
         private static SystemLogger _instance;
 
-
         public void OrderCompletionTimePushed(OrderUpdate update)
         {
             throw new NotImplementedException();
         }
 
-        public void NewOrder(Order update)
+        public void NewOrder(Order update, Customer customer)
         {
-            LogToConsole(string.Format("Order #{0} received.", update.ID.ToString())); 
+            LogToConsole(string.Format("Order #{0} received for '{1}'.", update.ID.ToString(), customer.Name)); 
         }
     }
 }

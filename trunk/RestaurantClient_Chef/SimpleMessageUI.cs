@@ -49,9 +49,20 @@ namespace RestaurantClient_Chef
             throw new NotImplementedException();
         }
 
-        public void NewOrder(Order update)
+        public void NewOrder(Order order, Customer customer)
         {
-            throw new NotImplementedException();
+            Orders.Add(customer, order);
+
+            UpdateTable();
         }
+
+        private void UpdateTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("ID"));
+
+        }
+
+        private Dictionary<Customer, Order> Orders = new Dictionary<Customer, Order>();
     }
 }

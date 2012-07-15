@@ -48,6 +48,11 @@
   <ItemGroup>
     <Compile Include="Contracts\IEventPublisher.cs" />
     <Compile Include="Contracts\Event.cs" />
+    <Compile Include="Restaurants\Restaurant.cs" />
+    <Compile Include="Restaurants\RestaurantHandler.cs" />
+    <Compile Include="Restaurants\RestaurantMenu.cs" />
+    <Compile Include="Utilities\EmailClient.cs" />
+    <Compile Include="Utilities\MessageParser.cs" />
     <Compile Include="OrderCollectionHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\SocketHandler.cs" />
     <Compile Include="SystemEventPublisher.cs" />
     <Compile Include="Utilities\SMSNotifier.cs" />
     <Compile Include="Utilities\SystemLogger.cs" />

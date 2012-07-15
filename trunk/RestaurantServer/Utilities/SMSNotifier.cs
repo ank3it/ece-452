@@ -117,9 +117,9 @@ namespace RestaurantServer.Utilities
             throw new NotImplementedException();
         }
 
-        void IEventCallback.NewOrder(Order update)
+        public void  NewOrder(Order update, Customer customer)
         {
-            throw new NotImplementedException();
+ 	        throw new NotImplementedException();
         }
     }
 }

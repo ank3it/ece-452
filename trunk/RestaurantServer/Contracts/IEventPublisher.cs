@@ -16,7 +16,7 @@ namespace RestaurantServer.Contracts
         void OrderCompletionTimePushed(OrderUpdate update);
 
         [OperationContract(IsOneWay = true)]
-        void NewOrder(Order update);
+        void NewOrder(Order update, Customer customer);
     }
 
     /// <summary>
