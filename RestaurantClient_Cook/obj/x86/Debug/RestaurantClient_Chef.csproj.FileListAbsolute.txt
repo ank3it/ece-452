@@ -1,0 +1,11 @@
+C:\Development\Output\Client\RestaurantClient_Chef.exe.config
+C:\Development\Output\Client\RestaurantClient_Chef.exe
+C:\Development\Output\Client\RestaurantClient_Chef.pdb
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\RestaurantClient_Chef.Properties.Resources.resources
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\RestaurantClient_Chef.SimpleMessageUI.resources
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\RestaurantClient_Chef.exe
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\RestaurantClient_Chef.pdb
+C:\Development\RestaurantClient_Chef\obj\x86\Debug\RestaurantClient_Chef.MenuView.resources
