@@ -1,0 +1,11 @@
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\RestaurantClient_Cook.SimpleMessageUI.resources
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\RestaurantClient_Cook.Properties.Resources.resources
+C:\Development\Output\Client\RestaurantClient_Cook.exe.config
+C:\Development\Output\Client\RestaurantClient_Cook.exe
+C:\Development\Output\Client\RestaurantClient_Cook.pdb
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\RestaurantClient_Cook.exe
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\RestaurantClient_Cook.pdb
+C:\Development\RestaurantClient_Cook\obj\x86\Debug\RestaurantClient_Cook.SetTimeForm.resources
