@@ -54,6 +54,15 @@ namespace RestaurantServer.Utilities
 
                     // place order 
                     Order o = new Order(Program.OrderCount++, items, restaurantName);
+                    // calculate price of order
+                    decimal price = 0;
+                    foreach (string item in o.Items.Keys)
+                    {
+                        price += decimal.Parse(RestaurantHandler.Instance
+                                                  .GetRestaurant(restaurantName).Menu
+                                                  .Items[item].Price);
+                    }
+                    o.Price = price;
                     Customer c = new Customer(customerName, customerAddress, customerNumber);
                     SystemEventPublisher.Instance.PublishNewOrder(o, c);
                     return "\n";

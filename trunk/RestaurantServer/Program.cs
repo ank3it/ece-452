@@ -7,6 +7,7 @@ using System.ServiceModel.Channels;
 using RestaurantServer.Contracts;
 using RestaurantServer.Utilities;
 using System.Collections.Generic;
+using RestaurantServer.Restaurants;
 
 namespace RestaurantServer
 {
@@ -24,19 +25,24 @@ namespace RestaurantServer
             SystemLogger.Instance.LogToConsole("Socket-listening threads are active.");
 
             // initialize server objects
-            RestaurantHandler.Instance.Restaurants.Add("Chink Foo",
-                new Restaurants.Restaurant("Chink Foo"));
-            RestaurantHandler.Instance.AddMenuItem("Chink Foo",
-                "Combo #7", "A delicious plate with ASIAN sauce.", "10.99");
-            RestaurantHandler.Instance.AddMenuItem("Chink Foo",
-                "Dog Meat with Soy Sauce", "Golden retriever roasted with soy sauce laid on a bed of rice.", "10.99");
-            RestaurantHandler.Instance.AddMenuItem("Chink Foo",
-                "Sudhir's mom.", "Disappointment.", "50.00");
+            //SMSNotifier.Instance.NewOrder(null, null);
+            RestaurantHandler.Instance.Restaurants.Add("Du Ma May Restaurant",
+                new Restaurants.Restaurant("Du Ma May Restaurant"));
+            RestaurantHandler.Instance.AddMenuItem("Du Ma May Restaurant",
+                "Combo #7", "n/a", "10.99");
+            RestaurantHandler.Instance.AddMenuItem("Du Ma May Restaurant",
+                "Duck Meat with Soy Sauce", "n/a", "10.99");
+            RestaurantHandler.Instance.AddMenuItem("Du Ma May Restaurant",
+                "Spring Rolls with Fries", "n/a", "5.00");
+            RestaurantHandler.Instance.AddMenuItem("Du Ma May Restaurant",
+                "Curry Rice with Chicken", "n/a", "8.00");
 
             SystemLogger.Instance.LogToConsole("Restaurants loaded.");
             SystemLogger.Instance.LogToConsole("System online.");
             Console.WriteLine("\r\nServer hot-keys:");
             Console.WriteLine("(e) - Exit.");
+            Console.WriteLine("(v) - View Menus.");
+            Console.WriteLine("(p) - Ping SMS Service.");
             while (true)
             {
                 
@@ -44,16 +50,38 @@ namespace RestaurantServer
 
                 if (key == "e")
                 {
-                    break;
-                    /*
+                    //break;
+                    
                     // create sample order
                     Dictionary<string, int> items = new Dictionary<string,int>();
-                    items.Add("Burger", 2);
-                    Order o = new Order(OrderCount++, items);
+                    items.Add("Combo #7", 2);
+                    Order o = new Order(OrderCount++, items, "Du Ma May Restaurant");
 
-                    SystemEventPublisher.Instance.PublishNewOrder(o, new Customer("Test client", "", ""));*/
+                    SystemEventPublisher.Instance.PublishNewOrder(
+                        o, new Customer("Test client", "addr", "6477853904"));
                 }
-                //SystemEventPublisher.Instance.PublishEvent(new Event(Console.ReadLine(), DateTime.Now));
+                if (key == "v")
+                {
+                    SystemLogger.Instance.LogToConsole("Menus requested:");
+
+                    foreach (Restaurant r in RestaurantHandler.Instance.Restaurants.Values)
+                    {
+                        SystemLogger.Instance.LogToConsole("- " + r.Name);
+
+                        foreach (
+                            RestaurantServer.Restaurants.RestaurantMenu.RestaurantMenuItem i 
+                                in r.Menu.Items.Values)
+                        {
+                            SystemLogger.Instance.LogToConsole(string.Format("{0} - {1}", 
+                                i.Name,
+                                i.Price));
+                        }
+                    }
+                }
+                if (key == "p")
+                {
+                    SMSNotifier.Instance.PingTextPort();
+                }
             }
             host2.Close();
         }

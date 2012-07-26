@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using RestaurantServer.Contracts;
+using System.IO;
 
 
 namespace RestaurantServer.Utilities
@@ -41,6 +42,25 @@ namespace RestaurantServer.Utilities
         }
 
         /// <summary>
+        /// Log an entry to a text file.
+        /// </summary>
+        /// <param name="log"></param>
+        public void WriteLog(string log)
+        {
+            string path = @"C:\temp\log.txt";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            using(StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine(log);
+            }
+        }
+
+        /// <summary>
         /// Singleton instance of the this 'SystemLogger' type
         /// </summary>
         public static SystemLogger Instance
@@ -60,7 +80,7 @@ namespace RestaurantServer.Utilities
 
         public void OrderCompletionTimePushed(OrderUpdate update)
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public void NewOrder(Order update, Customer customer)

@@ -20,6 +20,7 @@ namespace RestaurantClient_Chef
             Application.SetCompatibleTextRenderingDefault(false);
             SimpleMessageUI ui = new SimpleMessageUI();
             WCFClient = new EventPublisherClient(new InstanceContext(ui));
+            WCFClient.Subscribe();
             Application.Run(ui);
         }
 

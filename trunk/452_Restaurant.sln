@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantServer", "Restaur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantClient_Chef", "RestaurantClient_Chef\RestaurantClient_Chef.csproj", "{DEDACD95-C8AE-4802-9621-B08D9694423B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantClient_Cook", "RestaurantClient_Cook\RestaurantClient_Cook.csproj", "{AE73A379-028D-4DBD-B3AF-BBD8E96A268B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +21,10 @@ Global
 		{DEDACD95-C8AE-4802-9621-B08D9694423B}.Debug|x86.Build.0 = Debug|x86
 		{DEDACD95-C8AE-4802-9621-B08D9694423B}.Release|x86.ActiveCfg = Release|x86
 		{DEDACD95-C8AE-4802-9621-B08D9694423B}.Release|x86.Build.0 = Release|x86
+		{AE73A379-028D-4DBD-B3AF-BBD8E96A268B}.Debug|x86.ActiveCfg = Debug|x86
+		{AE73A379-028D-4DBD-B3AF-BBD8E96A268B}.Debug|x86.Build.0 = Debug|x86
+		{AE73A379-028D-4DBD-B3AF-BBD8E96A268B}.Release|x86.ActiveCfg = Release|x86
+		{AE73A379-028D-4DBD-B3AF-BBD8E96A268B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

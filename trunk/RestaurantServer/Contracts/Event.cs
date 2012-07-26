@@ -76,10 +76,16 @@ namespace RestaurantServer.Contracts
             RestaurantName = restaurantName;
         }
 
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
         public string RestaurantName { get; private set; }
 
+        [DataMember]
         public Dictionary<string, int> Items { get; private set; }
 
+        [DataMember]
         public int ID { get; private set; }
     }
 
@@ -103,16 +109,19 @@ namespace RestaurantServer.Contracts
         /// <summary>
         /// Address of customer to deliver order to.
         /// </summary>
+        [DataMember]
         public string Address { get; private set; }
 
         /// <summary>
         /// Name of customer.
         /// </summary>
+        [DataMember]
         public string Name { get; private set; }
 
         /// <summary>
         /// Phone number of customer to give SMS updates to.
         /// </summary>
+        [DataMember]
         public string PhoneNumber { get; private set; }
     }
 }

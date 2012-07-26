@@ -24,6 +24,12 @@ namespace RestaurantServer
         /// <returns></returns>
         public Restaurant GetRestaurant(string name)
         {
+
+            if (name == "Du Ma May")
+            {
+                name = "Du Ma May Restaurant";
+            }
+
             return Restaurants[name];
         }
 
