@@ -6,6 +6,7 @@ using System.ServiceModel;
 
 using RestaurantServer.Contracts;
 using RestaurantServer.Utilities;
+using RestaurantServer.Restaurants;
 
 namespace RestaurantServer
 {
@@ -36,6 +37,16 @@ namespace RestaurantServer
         {
             subscribers.ForEach(x => x.NewOrder(o, c));
             OrderCollectionHandler.Instance.AddOrder(o);
+        }
+
+        /// <summary>
+        /// Get outstanding orders from clients.
+        /// </summary>
+        /// <returns></returns>
+        public void GetOrders()
+        {
+            // orders will get ssend to message
+            PublishEvent(new Event("REQUEST_ORDERS_TO_SERVER", DateTime.Now));
         }
 
         /// <summary>
@@ -98,8 +109,37 @@ namespace RestaurantServer
         public string SendMessage(string message)
         {
             SystemLogger.Instance.LogToConsole("Message received: " + message);
+            if (!message.Contains("UPDATE_TIME"))
+            {
+                // assume all messages are for menu changes
+                string[] msgObjs = message.Split(',');
+                string restaurantName = msgObjs[0];
+                RestaurantMenu menu = new RestaurantMenu();
+                for (int i = 1; i < msgObjs.Length; i = i + 2)
+                {
+                    menu.Add(msgObjs[i], msgObjs[i + 1]);
+                }
 
-            return "Message received";
+                RestaurantHandler.Instance.GetRestaurant(restaurantName).Menu = menu;
+
+                SystemLogger.Instance.LogToConsole("Menu updated for '"
+                    + restaurantName + "'.");
+
+                return "Message received";
+            }
+            else
+            {
+                message = message.Replace("UPDATE_TIME:", string.Empty);
+                string id = message.Split(',')[0];
+                string time = message.Split(',')[1];
+                // SMS - delivery boy
+                // update clients
+                OrderUpdate o = new OrderUpdate(int.Parse(id), decimal.Parse(time));
+                SMSNotifier.Instance.OrderCompletionTimePushed(o);
+                subscribers.ForEach(x => x.OrderCompletionTimePushed(o));
+
+                return "Message received";
+            }
         }
 
         /// <summary>

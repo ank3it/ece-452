@@ -21,11 +21,12 @@
     <MetadataSource Address="http://localhost:8085/SystemEventPublisher" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="SystemEventPublisher.wsdl" MetadataType="Wsdl" ID="fdf0f8b7-8d36-4a19-9da1-9cde160da212" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?wsdl" />
-    <MetadataFile FileName="SystemEventPublisher.disco" MetadataType="Disco" ID="7aec4881-8b3c-4dfe-a312-e841615cb07c" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?disco" />
-    <MetadataFile FileName="SystemEventPublisher.xsd" MetadataType="Schema" ID="e8defb67-61ab-4440-b7c9-8942d1b7810b" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?xsd=xsd0" />
+    <MetadataFile FileName="SystemEventPublisher3.xsd" MetadataType="Schema" ID="69fd549a-2494-4fb6-b327-7f275bc6ec7e" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?xsd=xsd3" />
     <MetadataFile FileName="SystemEventPublisher1.xsd" MetadataType="Schema" ID="829e65be-a00e-4b9d-9354-e6aea77d4cda" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?xsd=xsd1" />
     <MetadataFile FileName="SystemEventPublisher2.xsd" MetadataType="Schema" ID="5adb4107-86c8-4e32-9728-091583d8fcf4" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?xsd=xsd2" />
+    <MetadataFile FileName="SystemEventPublisher.wsdl" MetadataType="Wsdl" ID="fdf0f8b7-8d36-4a19-9da1-9cde160da212" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?wsdl" />
+    <MetadataFile FileName="SystemEventPublisher.xsd" MetadataType="Schema" ID="e8defb67-61ab-4440-b7c9-8942d1b7810b" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?xsd=xsd0" />
+    <MetadataFile FileName="SystemEventPublisher.disco" MetadataType="Disco" ID="7aec4881-8b3c-4dfe-a312-e841615cb07c" SourceId="1" SourceUrl="http://localhost:8085/SystemEventPublisher?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

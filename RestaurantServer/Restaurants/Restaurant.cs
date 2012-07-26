@@ -21,6 +21,6 @@ namespace RestaurantServer.Restaurants
 
         public string Name { get; private set; }
 
-        public RestaurantMenu Menu { get; private set; }
+        public RestaurantMenu Menu { get; set; }
     }
 }

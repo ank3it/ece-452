@@ -21,7 +21,6 @@ namespace RestaurantClient_Chef
             //PublisherClient = new EventPublisherClient(
         }
 
-
         /// <summary>
         /// Client for the event publication service.
         /// </summary>

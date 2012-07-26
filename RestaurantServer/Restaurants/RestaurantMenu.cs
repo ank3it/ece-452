@@ -19,6 +19,12 @@ namespace RestaurantServer.Restaurants
             Items = new Dictionary<string, RestaurantMenuItem>();
         }
 
+        public void Add(string name, string price)
+        {
+            var item = new RestaurantMenuItem(name, string.Empty, price);
+            Items.Add(name, item);
+        }
+
         public Dictionary<string, RestaurantMenuItem> Items { get; private set; }
 
         /// <summary>
